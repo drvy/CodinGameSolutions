@@ -1,52 +1,112 @@
 <?php
 /**
- * Destroy the mountains before your starship collides with one of them. 
- * For that, shoot the highest mountain on your path.
+ * Your program must allow Thor to reach the light of power.
  * 
- * At the start of each game turn, you are given the height of the 8 mountains
- * from left to right. By the end of the game turn, you must fire on the 
- * highest mountain by outputting its index (from 0 to 7). Firing on a mountain 
- * will only destroy part of it, reducing its height.  Your ship descends after 
- * each pass.
+ * Thor moves on a map which is 40 wide by 18 high. Note that the coordinates 
+ * (X and Y) start at the top left! This means the most top left cell has the 
+ * coordinates "X=0,Y=0" and the most bottom right one has the coordinates 
+ * "X=39,Y=17".
  * 
- * Within an infinite loop, read the heights of the mountains from the standard 
- * input and print to the standard output the index of the mountain to shoot.
+ * Once the program starts you are given:
+ * the variable lightX: the X position of the light of power Thor must reach.
+ * the variable lightY: the Y position of the light of power Thor must reach.
+ * the variable initialTX: the starting X position of Thor.
+ * the variable initialTY: the starting Y position of Thor.
  * 
- * Input for one game turn:
- * 8 lines: one integer mountainH per line. Each represents the height of one 
- * mountain given in the order of their index (from 0 to 7).
+ * At the end of the game turn, you must output the direction in which you 
+ * want Thor to go among:
  * 
- * Output for one game turn:
- * A single line with one integer for the index of which mountain to shoot.
+ * N (North)
+ * NE (North-East)
+ * E (East)
+ * SE (South-East)
+ * S (South)
+ * SW (South-West)
+ * W (West)
+ * NW (North-West)
  * 
- * Constraints:
- * 0 ≤ mountainH ≤ 9
- * Response time per turn ≤ 100ms
+ * The program must first read the initialization data from the standard input, 
+ * then, in an infinite loop, provides on the standard output the instructions 
+ * to move Thor.
+ * 
+ * Initialization input
+ * Line 1: 4 integers lightX lightY initialTX initialTY. 
+ * (lightX, lightY) indicates the position of the light. 
+ * (initialTX, initialTY) indicates the initial position of Thor.
+ * 
+ * Input for a game round
+ * Line 1: the number of remaining moves for Thor to reach the light of power: 
+ * remainingTurns. You can ignore this data but you must read it.
+ * 
+ * Output for a game round
+ * A single line providing the move to be made: N NE E SE S SW W or NW
+ * 
+ * Constraints
+ * 0 ≤ lightX < 40
+ * 0 ≤ lightY < 18
+ * 0 ≤ initialTX < 40
+ * 0 ≤ initialTY < 18
+ * Response time for a game round ≤ 100ms
  * 
  * @author Dragomir Yordanov (@drvymonkey)
  * @copyright The MIT Licence.
  */
 
-// game loop
+fscanf(STDIN, "%d %d %d %d",
+    $LX, // the X position of the light of power
+    $LY, // the Y position of the light of power
+    $TX, // Thor's starting X position
+    $TY // Thor's starting Y position
+);
+
+// The game loop
 while (TRUE){
 
-    // $i = One mountain's index.
-    // $hIndex = The index of the highest mountain.
-    // $hHeight = The height of the highest mountain.
-    for ($i=0, $hIndex=0, $hHeight=0; $i < 8; $i++){
+    fscanf(STDIN, "%d", $E); // p energy.
 
-        fscanf(STDIN, "%d", $height); // Height of the mountain.
-        
-        if($height > $hHeight){
-            $hIndex = $i;
-            $hHeight = $height;
-        }
+    # nw   N    ne
+    #     W E
+    # sw   S    se
 
-        continue;
+    if($LX < $TX && $LY < $TY){
+        $res = 'NW';
+        $TX--; $TY--;
     }
 
-    echo $hIndex, "\n";
+    elseif($LX > $TX && $LY > $TY){
+        $res = 'SE'; 
+        $TX++; $TY++; 
+    }
 
-    // Write an action using echo(). DON'T FORGET THE TRAILING \n
-    // To debug (equivalent to var_dump): error_log(var_export($var, true));
+    elseif($LX < $TX && $LY > $TY){
+        $res = 'SW'; 
+        $TX--; $TY++; 
+    }
+
+    elseif($LX > $TX && $LY < $TY){
+        $res = 'NS';
+        $TX++; $TY--; 
+    }
+
+    elseif($LX < $TX) {
+        $res = 'W';
+        $TX--; 
+    }
+
+    elseif($LX > $TX) {
+        $res = 'E'; 
+        $TX++;
+    }
+
+    elseif($LY > $TY) {
+        $res = 'S'; 
+        $TY++;
+    }
+
+    elseif($LY < $TY) {
+        $res = 'N'; 
+        $TY--;
+    }
+
+    echo $res, "\n";
 }
