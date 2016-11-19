@@ -48,6 +48,8 @@
  * 0 ≤ initialTY < 18
  * Response time for a game round ≤ 100ms
  * 
+ * https://www.codingame.com/training/easy/power-of-thor-episode-1
+ * 
  * @author Dragomir Yordanov (@drvymonkey)
  * @copyright The MIT Licence.
  */

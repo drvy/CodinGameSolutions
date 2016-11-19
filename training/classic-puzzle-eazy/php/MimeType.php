@@ -39,6 +39,8 @@
  * File names are composed of a maximum of 256 alphanumerical ASCII and dots (.)
  * There are no spaces in the file names, extensions or MIME types.
  * 
+ * https://www.codingame.com/training/easy/mime-type
+ * 
  * @author Dragomir Yordanov (@drvymonkey)
  * @copyright The MIT Licence.
  */

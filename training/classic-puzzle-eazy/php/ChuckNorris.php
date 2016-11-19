@@ -36,6 +36,8 @@
  * Constraints
  * 0 < N < 100s
  * 
+ * https://www.codingame.com/training/easy/chuck-norris
+ * 
  * @author Dragomir Yordanov (@drvymonkey)
  * @copyright The MIT Licence.
  */

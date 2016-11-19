@@ -47,6 +47,8 @@
  * Constraints
  * 0 < N < 10000
  * 
+ * https://www.codingame.com/training/easy/defibrillators
+ * 
  * @author Dragomir Yordanov (@drvymonkey)
  * @copyright The MIT Licence.
  */

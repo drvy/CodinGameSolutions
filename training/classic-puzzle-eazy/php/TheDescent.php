@@ -23,6 +23,8 @@
  * 0 ≤ mountainH ≤ 9
  * Response time per turn ≤ 100ms
  * 
+ * https://www.codingame.com/training/easy/the-descent
+ * 
  * @author Dragomir Yordanov (@drvymonkey)
  * @copyright The MIT Licence.
  */

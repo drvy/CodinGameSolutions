@@ -24,6 +24,8 @@
  * Constraints
  * 0 ≤ N < 10000
  * 
+ * https://www.codingame.com/training/easy/temperatures
+ * 
  * @author Dragomir Yordanov (@drvymonkey)
  * @copyright The MIT Licence.
  */

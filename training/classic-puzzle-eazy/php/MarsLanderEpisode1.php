@@ -71,6 +71,8 @@
  * 0 ≤ power ≤ 4
  * Response time per turn ≤ 100ms
  * 
+ * https://www.codingame.com/training/easy/mars-lander-episode-1
+ * 
  * @author Dragomir Yordanov (@drvymonkey)
  * @copyright The MIT Licence.
  */

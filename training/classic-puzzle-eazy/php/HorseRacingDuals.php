@@ -21,6 +21,8 @@
  * 1 < N  < 100000
  * 0 < Pi ≤ 10000000
  * 
+ * https://www.codingame.com/training/easy/horse-racing-duals
+ * 
  * @author Dragomir Yordanov (@drvymonkey)
  * @copyright The MIT Licence.
  */
@@ -30,7 +32,7 @@ $horses = array(); // Container for all the horses
 
 for ($i = 0; $i < $N; ++$i){
     
-    fscanf(STDIN, "%d",$Pi); // Strength of the horse
+    fscanf(STDIN, "%d", $Pi); // Strength of the horse
     $horses[$Pi] = $Pi; // Set index to $Pi to prevent duplicates.
     
 }
@@ -40,9 +42,12 @@ rsort($horses);
 
 // Max difference is 10000000
 for($i=0, $difference=10000000; $i < ($N-1); ++$i){
-    $_dif = ($horses[$i] - $horses[$i+1]);
-    if($_dif < $difference){ $difference = $_dif; }
-}
 
+    $_dif = ($horses[$i] - $horses[$i+1]);
+
+    if($_dif < $difference){
+        $difference = $_dif;
+    }
+}
 
 echo $difference, "\n";
