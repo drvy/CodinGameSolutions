@@ -20,6 +20,9 @@ Categorize your solution under the correspondent directory.
 - Use clear code. Not necessary a standard code but a clear one. _Shorter and unreadable is NOT better_.
 - Try to optimize the code for the least execution time but remember that readability is better than fast.
 
+- The solution should complete all of the archievements presented in the exercise unless one of the those
+is a requiring you to solve it in another language (such as Horse Racing Duals.)
+
 ### Example of a solution template:
 ```php
 <?php
