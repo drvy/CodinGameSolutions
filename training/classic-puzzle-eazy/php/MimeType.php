@@ -50,18 +50,6 @@ fscanf(STDIN, "%d", $q); // Number Q of file names to be analyzed.
 
 $mimeArray = array(); // array to contain all mime types and association.
 
-
-/**
- * Prints a echo with a ending new line (\n)
- * @param      string  $str    The string to print
- * @return     boolean
- */
-function newEcho($str){
-    echo $str."\n";
-    return true;
-}
-
-
 /**
  * Outputs the content following the last dot of the string provided.
  * Essentially in this case it's just a extension finder.
@@ -92,8 +80,7 @@ for ($i = 0; $i < $q; ++$i){
             break;
         }
         
-        continue;
     }
     
-    newEcho($mimeType);
+    echo $mimeType, "\n";
 }
