@@ -44,7 +44,7 @@ $temps = explode(' ', $TEMPS);
 // Sort all temps as numeric so the negatives come first.
 sort($temps, SORT_NUMERIC);
 
-// Find the closest one by susctracting and comparing.
+// Find the closest one by substracting and comparing.
 $closest = null;
 foreach($temps as $temp){
 
