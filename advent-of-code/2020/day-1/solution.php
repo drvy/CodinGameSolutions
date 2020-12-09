@@ -1,39 +1,57 @@
 <?php
 
-$input  = file('input.txt');
-$length = count($input);
-$target = 2020;
-$result = array('A' => 0, 'B' => 0);
+namespace AdventOfCode2020;
 
-for ($a = 0; $a < $length; ++$a) {
-    $numA = (int) $input[$a];
+/**
+ * Returns the result multiplicating the 2 and 3 numbers that sum to
+ * the target. (1721 + 299 = [2020] => 514579)
+ *
+ * @param array $input
+ * @param integer $target
+ * @return array
+ */
+function reportRepair(array $input, int $target = 2020): array
+{
+    $length = count($input);
+    $result = array('A' => 0, 'B' => 0);
 
-    if ($numA > $target) {
-        continue;
-    }
+    for ($a = 0; $a < $length; ++$a) {
+        $numA = (int) $input[$a];
 
-    for ($b = 0; $b < $length; ++$b) {
-        $numB = (int) $input[$b];
-
-        if ($numB > $target) {
+        if ($numA > $target) {
             continue;
         }
 
-        $sum = ($numA + $numB);
+        for ($b = 0; $b < $length; ++$b) {
+            $numB = (int) $input[$b];
 
-        if ($sum === $target) {
-            $result['A'] = $numA * $numB;
-        } elseif ($sum < $target) {
-            $diff = ($target - $sum);
-            $c    = array_search($diff, $input);
-            $numC = (int) $input[$c];
+            if ($numB > $target) {
+                continue;
+            }
 
-            if ($c) {
-                $result['B'] = $numA * $numB * $numC;
+            $sum = ($numA + $numB);
+
+            if ($sum === $target) {
+                $result['A'] = $numA * $numB;
+                continue;
+            }
+
+            if ($sum < $target) {
+                $diff = ($target - $sum);
+                $c    = array_search($diff, $input);
+
+                if ($c !== false) {
+                    $result['B']  = $numA * $numB * (int) $input[$c];
+                }
             }
         }
     }
+
+    return $result;
 }
+
+$input  = file('input.txt');
+$result = reportRepair($input, 2020);
 
 // 1016964 | 182588480
 echo "Result A: {$result['A']}\nResult B: {$result['B']}\n";
